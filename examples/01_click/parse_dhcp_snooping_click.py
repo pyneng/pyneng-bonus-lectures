@@ -24,7 +24,8 @@ def create(db_filename, db_schema):
 @main.command()
 @click.argument("filename", nargs=-1, required=True)
 @click.option("--db-filename", "-n", default=DFLT_DB_NAME, help="db filename")
-@click.option("--switch-data", "-s", default=False, is_flag=True, help="add switch data if set, else add normal data")
+@click.option("--switch-data", "-s", default=False, is_flag=True,
+              help="add switch data if set, else add normal data")
 def add(filename, db_filename, switch_data):
     """
     add data to db from FILENAME
@@ -39,9 +40,10 @@ def add(filename, db_filename, switch_data):
 
 @main.command()
 @click.option("--db-filename", "-n", default=DFLT_DB_NAME, help="db filename")
-@click.option("--key", "-k", type=click.Choice(["mac", "ip", "vlan", "interface", "switch"]), help="host key (parameter) to search")
+@click.option("--key", "-k", type=click.Choice(["mac", "ip", "vlan", "interface", "switch"]),
+              help="host key (parameter) to search")
 @click.option("--value", "-v", help="value of key")
-@click.option("--show-all", "-a", help="show db content")
+@click.option("--show-all", "-a", is_flag=True, help="show db content")
 def get(db_filename, key, value, show_all):
     """
     get data from db
@@ -51,7 +53,7 @@ def get(db_filename, key, value, show_all):
         print("Request data for host(s) with {} {}".format(key, value))
     elif key or value:
         print("Please give two or zero args\n")
-        #print(get.help)
+        # print(get.help)
     else:
         print("Showing {} content...".format(db_filename))
 
