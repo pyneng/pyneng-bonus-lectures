@@ -10,6 +10,14 @@ def send_show_command(device, command):
     return result
 
 
+def send_command_to_cisco_devices(device_list, command):
+    result = {}
+    for device in device_list:
+        ip = device["host"]
+        result[ip] = send_show_command(device, command)
+    return result
+
+
 @click.command()
 @click.argument("command")
 @click.argument("ip-list", nargs=-1)
@@ -19,6 +27,7 @@ def send_show_command(device, command):
 def main(command, ip_list, username, password, secret):
     device_params = {"device_type": "cisco_ios"}
     local_vars = locals()
+    device_list = []
 
     for param in ("username", "password", "secret"):
         if not local_vars[param]:
@@ -28,8 +37,14 @@ def main(command, ip_list, username, password, secret):
             device_params[param] = local_vars[param]
 
     for ip in ip_list:
-        device_params["host"] = ip
-        print(send_show_command(device_params, command))
+        device = device_params.copy()
+        device["host"] = ip
+        device_list.append(device)
+
+    result_dict = send_command_to_cisco_devices(device_list, command)
+    for ip, output in result_dict.items():
+        print("="*30, ip)
+        print(output)
 
 
 if __name__ == "__main__":
