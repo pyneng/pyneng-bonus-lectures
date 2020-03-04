@@ -7,6 +7,7 @@ import click
 
 def print_green(message):
     click.echo(click.style(message, fg="green", bold=True))
+    #click.secho(message, fg="green", bold=True)
 
 
 def print_red(message):
@@ -77,7 +78,8 @@ def update_session_stats(session_stats):
 @click.option("--long_break", "-l", default=30, show_default=True, type=int)
 @click.option("--set_size", "-p", default=4, show_default=True, type=int)
 def pomodoro(pomodoros_to_run, work_minutes, short_break, long_break, set_size):
-    session_stats = {"total": pomodoros_to_run, "done": 0, "todo": pomodoros_to_run}
+    session_stats = {"total": pomodoros_to_run, "done": 0,
+                     "todo": pomodoros_to_run}
     global stats
     stats = update_session_stats(session_stats)
 

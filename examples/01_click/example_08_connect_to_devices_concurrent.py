@@ -38,3 +38,21 @@ def main(command, yaml_file, threads):
 
 if __name__ == "__main__":
     main()
+
+
+"""
+$ python example_08_connect_to_devices_concurrent.py "sh clock" -y  devices_all.yaml -t 3
+Connecting to devices  [####################################]  100%
+['*13:16:58.775 UTC Wed Mar 4 2020',
+ '*13:16:59.250 UTC Wed Mar 4 2020',
+ '*13:16:59.251 UTC Wed Mar 4 2020',
+ '*13:17:04.914 UTC Wed Mar 4 2020',
+ '*13:17:05.477 UTC Wed Mar 4 2020',
+ '*13:17:05.569 UTC Wed Mar 4 2020',
+ '*13:17:11.035 UTC Wed Mar 4 2020',
+ '*13:17:11.826 UTC Wed Mar 4 2020',
+ '*13:17:11.899 UTC Wed Mar 4 2020',
+ '*13:17:17.176 UTC Wed Mar 4 2020',
+ '*13:17:18.027 UTC Wed Mar 4 2020',
+ '*13:17:18.234 UTC Wed Mar 4 2020']
+"""
