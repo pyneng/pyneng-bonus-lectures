@@ -30,3 +30,4 @@ Thumbs.db
 *.un~
 *.pyc
 *.swp
+.mypy_cache
