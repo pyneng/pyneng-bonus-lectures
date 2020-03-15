@@ -1,5 +1,6 @@
-def check_password(username, password, password_length=8,
-                   check_username=True, spec_sym=True):
+def check_password(
+    username, password, password_length=8, check_username=True, spec_sym=True
+):
     if len(password) < password_length:
         print("Пароль слишком короткий")
         return False
@@ -18,18 +19,16 @@ def create_user(db):
         check = check_password(username, password)
         if check:
             break
-    with open(db, 'a') as f:
+    with open(db, "a") as f:
         f.write(f"{username},{password}\n")
 
 
 def create_user(db):
     username = input("Введите имя пользователя: ")
-    while not check_password(
-        username, password := input("Введите пароль: ")
-    ):
+    while not check_password(username, password := input("Введите пароль: ")):
         pass
-    with open(db, 'a') as f:
+    with open(db, "a") as f:
         f.write(f"{username},{password}\n")
 
 
-create_user('passwords.txt', password_length=10, spec_sym=True)
+create_user("passwords.txt", password_length=10, spec_sym=True)

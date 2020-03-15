@@ -28,4 +28,3 @@ if __name__ == "__main__":
         port=20020,
     )
     print(send_show(r1, "sh clock"))
-

@@ -12,7 +12,6 @@ class CiscoSSH(BaseSSH):
         pass
 
 
-
 @final
 class CiscoIosSSH:
     pass
