@@ -15,8 +15,7 @@ def check_password(
 def create_user(db):
     username = input("Введите имя пользователя: ")
     while True:
-        password = input("Введите пароль: ")
-        check = check_password(username, password)
+        check = check_password(username, password := input("Введите пароль: "))
         if check:
             break
     with open(db, "a") as f:
