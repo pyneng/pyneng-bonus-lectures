@@ -10,3 +10,10 @@ tmux -t r3 sh -c 'while true; do telnet 127.0.0.1 60103 ; echo Retrying in 1 sec
 tmux -t sw1 sh -c 'while true; do telnet 127.0.0.1 60201 ; echo Retrying in 1 secods...; sleep 1 ; clear; done'
 select 1
 
+source-file ~/.tmux.conf
+
+new -s pyneng -d
+new-window -n r1
+send-keys -t pyneng:r1 ipython Enter
+new-window -n r2
+
