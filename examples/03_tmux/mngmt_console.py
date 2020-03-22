@@ -1,6 +1,6 @@
 import time
 import subprocess
-from collections import Iterable
+from collections.abc import Iterable
 
 
 # Setup constants
@@ -11,30 +11,27 @@ allr = range(1, 8)
 # allsw = range(11,15)
 
 
-traceroute = "traceroute {}"
-traceroute_s = "traceroute {} source {}"
+def coffee_break(devices, *, minutes, keep_alive):
+    total_seconds = minutes * 60
+    cycles = total_seconds / keep_alive
+    for _ in range(int(cycles)):
+        time.sleep(keep_alive)
+        send_commands(devices, "\n", return_to_mngmt=True)
 
 
-# Functions for TESTs
-def show_command(r_id, cmd):
-    send_commands(r_id, cmd, return_to_mngmt=False)
-
-
-def ping(r_id, d_ip, s_ip=""):
+def ping(r_id, d_ip, s_ip="", **kwargs):
     if s_ip:
-        write_to(r_id, f"ping {d_ip} source {s_ip}")
+        command = f"ping {d_ip} source {s_ip}"
     else:
-        write_to(r_id, f"ping {d_ip}")
+        command = f"ping {d_ip}"
+    if type(r_id) == int:
+        write_to(r_id, command, **kwargs)
+    elif isinstance(r_id, Iterable):
+        for rid in r_id:
+            write_to(rid, command, **kwargs)
 
 
-def trace(r_id, d_ip, s_ip=""):
-    if s_ip:
-        write_to(r_id, traceroute_s.format(d_ip, s_ip))
-    else:
-        write_to(r_id, traceroute.format(d_ip))
-
-
-def send_commands(r_id, cmds, return_to_mngmt=False, fast=True):
+def send_commands(r_id, cmds, *, return_to_mngmt=False, fast=True):
     if type(r_id) == int:
         write_to(r_id, cmds, mngmnt_screen, return_to_mngmt, fast)
     elif isinstance(r_id, Iterable):
