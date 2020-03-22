@@ -8,6 +8,7 @@
 * [Update your tmux to latest version](http://witkowskibartosz.com/blog/update-your-tmux-to-latest-version.html)
 * [libtmux](https://github.com/tmux-python/libtmux)
 * [Getting back old copy paste behaviour in tmux, with mouse](https://stackoverflow.com/questions/17445100/getting-back-old-copy-paste-behaviour-in-tmux-with-mouse)
+* [How to set up tmux so that it starts up with specified windows opened?](https://stackoverflow.com/questions/5609192/how-to-set-up-tmux-so-that-it-starts-up-with-specified-windows-opened)
 
 
 ## отправка команд на оборудование с управляющей консоли через tmux 
