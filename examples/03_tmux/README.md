@@ -1,6 +1,7 @@
 ## Ссылки
 
 * [docs](https://github.com/tmux/tmux/wiki/Getting-Started)
+* [Tmux Cheat Sheet & Quick Reference](http://tmuxcheatsheet.com/)
 * [tmux cheat sheet](https://gist.github.com/andreyvit/2921703)
 * [tmux shortcuts & cheatsheet](https://gist.github.com/MohamedAlaa/2961058)
 * [How to start tmux with several panes open at the same time?](https://askubuntu.com/a/832465)
@@ -63,6 +64,7 @@ $ tmux ls
 * `prefix n` - следующее окно по индексу
 * `prefix p` - предыдущее окно по индексу
 * `prefix l` - вернуться на предыдущее открытое окно
+* `prefix &` - закрыть окно, надо подтвердить
 
 ## tree mode
 
@@ -153,3 +155,10 @@ prefix : resize-pane -R 20 (Resizes the current pane right by 20 cells)
 ## Командный режим
 
 Выход `Enter`.
+
+## Полезное
+
+Индексация окон с 1
+```
+set -g base-index 1
+```
