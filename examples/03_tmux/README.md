@@ -9,6 +9,7 @@
 * [libtmux](https://github.com/tmux-python/libtmux)
 * [Getting back old copy paste behaviour in tmux, with mouse](https://stackoverflow.com/questions/17445100/getting-back-old-copy-paste-behaviour-in-tmux-with-mouse)
 * [How to set up tmux so that it starts up with specified windows opened?](https://stackoverflow.com/questions/5609192/how-to-set-up-tmux-so-that-it-starts-up-with-specified-windows-opened)
+* [Use system clipboard in vi-copy mode in tmux](https://unix.stackexchange.com/questions/131011/use-system-clipboard-in-vi-copy-mode-in-tmux)
 
 
 ## отправка команд на оборудование с управляющей консоли через tmux 
