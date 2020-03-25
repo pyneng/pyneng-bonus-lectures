@@ -40,20 +40,39 @@ def send_commands(r_id, cmds, *, return_to_mngmt=False, fast=True):
 
 
 # Functions
-def write_to(
-    r_id, commands, return_to_screen=mngmnt_screen, return_to_mngmt=True, fast=False
-):
+def write_to(r_id, commands, return_to_mngmt=True, prompt=None, fast=True):
     if type(commands) == str:
-        commands = commands.splitlines()
-    for line in commands:
-        run(f"tmux select-window -t {r_id}")
-        run(f'tmux send-keys -t {r_id} "{line}" Enter')
-        if fast:
-            time.sleep(slp_time)
+        commands = [commands]
+    for command in commands:
+        if prompt:
+            read_to_prompt(r_id, command, prompt)
         else:
-            time.sleep(5)
+            write_to_window(r_id, command, fast=fast)
+
     if return_to_mngmt:
-        run(f"tmux select-window -t {return_to_screen}")
+        run(f"tmux select-window -t {mngmnt_screen}")
+
+
+def write_to_window(r_id, command, fast=False):
+    run(f"tmux select-window -t {r_id}")
+    run(f'tmux send-keys -t {r_id} "{command}" Enter')
+    if fast:
+        time.sleep(slp_time)
+    else:
+        time.sleep(5)
+
+
+def read_to_prompt(r_id, command, prompt="#"):
+    run(f"tmux select-window -t {r_id}")
+    run(f'tmux send-keys -t {r_id} "{command}" Enter')
+    time.sleep(2)
+    while True:
+        run("tmux capture-pane -S -10 ; tmux save-buffer '/tmp/buffer_file' ; tmux delete-buffer")
+        with open("/tmp/buffer_file") as f:
+            content = f.readlines()
+            if prompt in content[-1]:
+                break
+        time.sleep(1)
 
 
 def run(line):
