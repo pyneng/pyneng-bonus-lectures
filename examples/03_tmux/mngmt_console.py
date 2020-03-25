@@ -31,16 +31,15 @@ def ping(r_id, d_ip, s_ip="", **kwargs):
             write_to(rid, command, **kwargs)
 
 
-def send_commands(r_id, cmds, *, return_to_mngmt=False, fast=True):
+def send_commands(r_id, cmds, return_to_mngmt=False, fast=True, prompt=None):
     if type(r_id) == int:
-        write_to(r_id, cmds, mngmnt_screen, return_to_mngmt, fast)
-    elif isinstance(r_id, Iterable):
+        r_id = [r_id]
+    else:
         for rid in r_id:
-            write_to(rid, cmds, mngmnt_screen, return_to_mngmt, fast)
+            write_to(rid, cmds, mngmnt_screen, return_to_mngmt, fast, prompt)
 
 
-# Functions
-def write_to(r_id, commands, return_to_mngmt=True, prompt=None, fast=True):
+def write_to(r_id, commands, return_to_mngmt=True, fast=True, prompt=None):
     if type(commands) == str:
         commands = [commands]
     for command in commands:
