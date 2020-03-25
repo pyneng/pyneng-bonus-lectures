@@ -19,24 +19,11 @@ def coffee_break(devices, *, minutes, keep_alive):
         send_commands(devices, "\n", return_to_mngmt=True)
 
 
-def ping(r_id, d_ip, s_ip="", **kwargs):
-    if s_ip:
-        command = f"ping {d_ip} source {s_ip}"
-    else:
-        command = f"ping {d_ip}"
-    if type(r_id) == int:
-        write_to(r_id, command, **kwargs)
-    elif isinstance(r_id, Iterable):
-        for rid in r_id:
-            write_to(rid, command, **kwargs)
-
-
-def send_commands(r_id, cmds, return_to_mngmt=False, fast=True, prompt=None):
+def send_commands(r_id, cmds, **kwargs):
     if type(r_id) == int:
         r_id = [r_id]
-    else:
-        for rid in r_id:
-            write_to(rid, cmds, mngmnt_screen, return_to_mngmt, fast, prompt)
+    for rid in r_id:
+        write_to(rid, cmds, **kwargs)
 
 
 def write_to(r_id, commands, return_to_mngmt=True, fast=True, prompt=None):
@@ -68,7 +55,7 @@ def read_to_prompt(r_id, command, prompt="#"):
     while True:
         run("tmux capture-pane -S -10 ; tmux save-buffer '/tmp/buffer_file' ; tmux delete-buffer")
         with open("/tmp/buffer_file") as f:
-            content = f.readlines()
+            content = f.read().strip().splitlines()
             if prompt in content[-1]:
                 break
         time.sleep(1)
