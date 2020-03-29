@@ -16,6 +16,6 @@ class CiscoTelnet:
             self.telnet.read_until(b"Password:")
             self.telnet.write(enable_password.encode("ascii") + b"\n")
         if disable_paging:
-            self.telnet.write(b"terminal length 0\n")
-        time.sleep(0.5)
-        self.telnet.read_very_eager()
+            self.telnet.write(b"terminal length 0\n")  
+        time.sleep(0.5)  
+        self.telnet.read_very_eager() 
