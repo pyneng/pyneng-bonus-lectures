@@ -1,5 +1,6 @@
 import telnetlib
 import time
+import netmiko.cisco.cisco_ios.CiscoIos
 
 
 class CiscoTelnet:
@@ -30,8 +31,11 @@ class CiscoTelnet:
         time.sleep(0.5)
         self.telnet.read_very_eager()
 
-
     def __repr__(self):
         pass
+
+
 def func():
     pass
+
+
