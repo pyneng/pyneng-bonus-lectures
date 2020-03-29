@@ -1,7 +1,5 @@
 from seven_dwwarfs import Grumpy, Happy, Sleepy, Bashful, Sneezy, Dopey, Doc, Section, TestLine
-x = {  'a':37,'b':42,
-
-'c':927}
+x = { 'a':37,'b':42, 'c':927}
 
 x = 123456789.123456789E123456789
 

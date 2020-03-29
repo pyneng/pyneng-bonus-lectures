@@ -3,8 +3,7 @@ import time
 
 
 class CiscoTelnet:
-    def __init__(self, ip, username, password, enable_password=None,
-                 disable_paging=True):
+    def __init__(self, ip, username, password, enable_password=None, disable_paging=True, strip_command=True):
         self.ip = ip
         self.telnet = telnetlib.Telnet(ip)
         self.telnet.read_until(b"Username:")
