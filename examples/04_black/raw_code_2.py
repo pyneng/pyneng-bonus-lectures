@@ -1,3 +1,4 @@
+import sys, os
 from pprint import pprint
 from netmiko import (ConnectHandler, NetMikoAuthenticationException,
                      NetMikoTimeoutException)
