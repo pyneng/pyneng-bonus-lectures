@@ -1,0 +1,19 @@
+---
+
+- name: Run show commands on routers
+  hosts: cisco_routers
+  gather_facts: false
+
+  vars:
+    interfaces: sh ip int br
+
+  tasks:
+
+    - name: run sh ip int br        
+      ios_command:
+        commands: "{{interfaces}}"
+
+    - name: run sh ip arp
+      ios_command:
+        commands: sh ip arp
+
