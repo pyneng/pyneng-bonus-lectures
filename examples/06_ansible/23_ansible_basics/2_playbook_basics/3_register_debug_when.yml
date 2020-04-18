@@ -1,16 +1,17 @@
 ---
 
 - name: Run show commands on routers
-  hosts: cisco_routers
+  hosts: 192.168.100.1
   gather_facts: false
 
   tasks:
 
-    - name: run sh ip int br
-      raw: sh ip int bri | ex unass
+    - name: run sh ip int br        
+      ios_command:
+        commands: sh ip int br
       register: sh_ip_int_br_result
 
     - name: Debug registered var
       debug:
-        msg: "Error in command"
-      when: "'invalid' in sh_ip_int_br_result.stdout"
+        msg: "IP адрес не найден"
+      when: "'4.4.4.4' not in sh_ip_int_br_result.stdout[0]"
