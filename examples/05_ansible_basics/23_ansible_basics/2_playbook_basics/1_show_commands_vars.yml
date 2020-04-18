@@ -13,7 +13,7 @@
       ios_command:
         commands: "{{interfaces}}"
 
-    - name: run sh ip arp
-      ios_command:
-        commands: sh ip arp
+
+    - name: show var
+      debug: var=run_command
 

@@ -1,14 +1,16 @@
 ---
 
 - name: Run show commands on routers
-  hosts: cisco_routers
+  hosts: all
   gather_facts: false
+  #strategy: free
 
   tasks:
 
     - name: run sh ip int br        
       ios_command:
         commands: sh ip int br
+      #ignore_errors: true
 
     - name: run sh ip arp
       ios_command:
@@ -21,7 +23,7 @@
 
   tasks:
 
-    - name: run sh int status
+    - name: run sh clock
       ios_command:
         commands: sh clock
 
