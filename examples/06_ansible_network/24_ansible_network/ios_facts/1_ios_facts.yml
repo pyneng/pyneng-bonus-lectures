@@ -1,0 +1,10 @@
+---
+
+- name: Collect IOS facts
+  hosts: cisco-routers
+
+  tasks:
+
+    - name: Facts
+      ios_facts:
+        gather_subset: all

@@ -1,0 +1,12 @@
+---
+
+- name: Run cfg commands on routers
+  hosts: cisco-routers
+
+  tasks:
+
+    - name: Config password encryption
+      ios_config:
+        lines:
+          - service password-encryption
+
