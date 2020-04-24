@@ -1,0 +1,17 @@
+---
+
+- name: Collect IOS facts
+  hosts: 192.168.100.1
+
+  tasks:
+
+    - name: Facts
+      ios_facts:
+        gather_subset: min
+        gather_network_resources:
+          - interfaces
+          - l3_interfaces
+
+    - name: Show ansible_network_resources
+      debug: var=ansible_network_resources
+

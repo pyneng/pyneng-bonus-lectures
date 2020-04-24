@@ -1,0 +1,17 @@
+---
+
+- name: Collect IOS facts
+  hosts: 192.168.100.1
+
+  tasks:
+
+    - name: Facts
+      ios_facts:
+        gather_subset: min
+        gather_network_resources:
+          - l3_interfaces
+
+    - name: Copy facts to files
+      copy:
+        content: "{{ ansible_network_resources.l3_interfaces | to_nice_json }}"
+        dest: "{{inventory_hostname}}_l3_intf.json"
