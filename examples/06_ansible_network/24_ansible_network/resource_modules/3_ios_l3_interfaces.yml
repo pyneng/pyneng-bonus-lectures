@@ -12,3 +12,8 @@
       ios_l3_interfaces:
         config: "{{ l3_intf }}"
         state: deleted
+      register: result
+
+    - name: Show result
+      debug: var=result
+
