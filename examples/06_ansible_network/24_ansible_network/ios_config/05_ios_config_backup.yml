@@ -1,7 +1,7 @@
 ---
 
 - name: Run cfg commands on routers
-  hosts: cisco-routers
+  hosts: cisco_routers
 
   tasks:
 
@@ -11,5 +11,5 @@
           - line vty 0 4
         lines:
           - login local
-          - transport input ssh
-        save_when: modified
+          - transport input ssh telnet
+        backup: yes

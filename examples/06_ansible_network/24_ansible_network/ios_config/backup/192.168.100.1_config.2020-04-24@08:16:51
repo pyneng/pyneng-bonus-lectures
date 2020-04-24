@@ -1,0 +1,152 @@
+Building configuration...
+
+Current configuration : 2460 bytes
+!
+! Last configuration change at 08:12:25 UTC Fri Apr 24 2020
+version 15.2
+no service timestamps debug uptime
+no service timestamps log uptime
+service password-encryption
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging buffered 20010
+enable password 7 070C285F4D06
+!
+no aaa new-model
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+ip auth-proxy max-login-attempts 5
+ip admission max-login-attempts 5
+!
+!
+!
+!
+!
+no ip domain lookup
+ip domain name pyneng
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+crypto pki token default removal timeout 0
+!
+!
+username cisco password 7 094F471A1A0A
+!
+redundancy
+!
+!
+ip ssh version 2
+!
+policy-map OUT_QOS
+ class class-default
+  shape average 100000000 1000000
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 4.4.4.4 255.255.255.255
+!
+interface Loopback35
+ no ip address
+!
+interface Loopback55
+ ip address 5.5.5.5 255.255.255.255
+!
+interface Loopback90
+ ip address 90.1.1.1 255.255.255.255
+!
+interface Ethernet0/0
+ ip address 192.168.101.1 255.255.255.0 secondary
+ ip address 192.168.102.1 255.255.255.0 secondary
+ ip address 192.168.100.1 255.255.255.0
+!
+interface Ethernet0/1
+ ip address 192.168.200.1 255.255.255.0
+!
+interface Ethernet0/2
+ ip address 19.1.1.1 255.255.255.0
+!
+interface Ethernet0/3
+ ip address 192.168.230.1 255.255.255.0
+!
+!
+router eigrp 1
+ network 0.0.0.0
+!
+router ospf 1
+ network 0.0.0.0 255.255.255.255 area 0
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+ip access-list extended INET-to-LAN
+ permit tcp 10.0.1.0 0.0.0.255 any eq www
+ permit tcp 10.0.1.0 0.0.0.255 any eq 22
+ permit icmp any any
+!
+logging 10.255.255.1
+logging 4.4.4.4
+logging 10.1.1.1
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+alias configure sh do sh
+alias exec ospf sh run | s ^router ospf
+alias exec bri show ip int bri | exc unass
+alias exec id show int desc
+alias exec top sh proc cpu sorted | excl 0.00%__0.00%__0.00%
+alias exec c conf t
+alias exec diff sh archive config differences nvram:startup-config system:running-config
+alias exec desc sh int desc | ex down
+alias exec bgp sh run | s ^router bgp
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+line vty 0 4
+ logging synchronous
+ login local
+ transport input telnet ssh
+!
+event manager applet COMM_ACC
+ event cli pattern ".*" sync no skip no occurs 1
+ action 1 syslog msg "User $_cli_username entered $_cli_msg on device $_cli_host "
+!
+end
