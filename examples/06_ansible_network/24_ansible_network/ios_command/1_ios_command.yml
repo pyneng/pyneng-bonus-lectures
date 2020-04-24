@@ -1,9 +1,7 @@
 ---
 
 - name: Run show commands on routers
-  hosts: cisco-routers
-  #connection: network_cli
-  #gather_facts: false
+  hosts: cisco_routers
 
 
   tasks:
