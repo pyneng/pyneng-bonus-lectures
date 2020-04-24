@@ -1,7 +1,7 @@
 ---
 
 - name: Collect IOS facts
-  hosts: cisco-routers
+  hosts: 192.168.100.1
 
   tasks:
 
