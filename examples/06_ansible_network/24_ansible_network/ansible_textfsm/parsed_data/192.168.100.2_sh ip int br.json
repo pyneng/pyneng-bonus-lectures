@@ -1,0 +1,38 @@
+[
+    {
+        "INTF": "Ethernet0/0",
+        "IPADDR": "192.168.100.2",
+        "PROTO": "up",
+        "STATUS": "up"
+    },
+    {
+        "INTF": "Ethernet0/1",
+        "IPADDR": "unassigned",
+        "PROTO": "up",
+        "STATUS": "up"
+    },
+    {
+        "INTF": "Ethernet0/2",
+        "IPADDR": "unassigned",
+        "PROTO": "down",
+        "STATUS": "administratively down"
+    },
+    {
+        "INTF": "Ethernet0/3",
+        "IPADDR": "unassigned",
+        "PROTO": "down",
+        "STATUS": "administratively down"
+    },
+    {
+        "INTF": "Loopback9",
+        "IPADDR": "unassigned",
+        "PROTO": "up",
+        "STATUS": "up"
+    },
+    {
+        "INTF": "Loopback19",
+        "IPADDR": "unassigned",
+        "PROTO": "up",
+        "STATUS": "up"
+    }
+]

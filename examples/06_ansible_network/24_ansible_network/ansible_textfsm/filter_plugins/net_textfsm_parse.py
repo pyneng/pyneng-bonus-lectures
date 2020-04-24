@@ -8,8 +8,8 @@ eos_command, et cetera to structured data using TextFSM templates.
 # import textfsm.clitable as clitable
 
 import os
-from clitable import CliTableError
-import clitable
+#from clitable import CliTableError
+from textfsm import clitable
 
 
 def get_template_dir():
