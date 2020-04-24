@@ -1,0 +1,16 @@
+---
+
+- name: Run show commands on routers
+  hosts: 192.168.100.1
+
+  tasks:
+
+    - name: run sh ip int br
+      ios_command:
+        commands: show ip int br
+      register: sh_ip_int_br_result
+
+    - name: Debug registered var
+      debug:
+        msg: "{{ sh_ip_int_br_result.stdout[0] | parse_cli('parse_spec/cisco_ios_show_ip_int_br.yml') }}"
+

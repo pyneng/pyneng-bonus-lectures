@@ -1,0 +1,14 @@
+---
+vars:
+  interface:
+    name: "{{ item.name }}"
+    ip: "{{ item.ip }}"
+    status: "{{ item.status }}"
+    protocol: "{{ item.protocol }}"
+
+keys:
+  router_intrefaces:
+    value: "{{ interface }}"
+    items: "^(?P<name>\\S+)\\s+(?P<ip>\\S+)\\s+\\S+\\s+\\S+\\s+(?P<status>\\S+)\\s+(?P<protocol>\\S+)"
+  state_static:
+    value: present
