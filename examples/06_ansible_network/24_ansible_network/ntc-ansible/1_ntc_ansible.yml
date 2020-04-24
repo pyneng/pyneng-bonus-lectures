@@ -15,7 +15,7 @@
         host: "{{ inventory_hostname }}"
         username: "cisco"
         password: "cisco"
-        template_dir: "library/ntc-ansible/ntc-templates/templates"
+        template_dir: "/home/vagrant/repos/ansible_modules/ntc-ansible/ntc-templates/templates"
       register: result
 
     - debug: var=result
