@@ -9,7 +9,7 @@
       ios_config:
         parents:
           - line vty 0 4
-        lines:
+        commands:
           - login local
           - transport input ssh
 

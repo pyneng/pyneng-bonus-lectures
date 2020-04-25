@@ -1,13 +1,13 @@
 ---
 
 - name: Run cfg commands on routers
-  hosts: cisco_routers
+  hosts: 192.168.100.1
 
   tasks:
 
     - name: Send config commands
       ios_config:
-        lines:
+        commands:
           - service password-encryption
           - no ip http server
           - no ip http secure-server

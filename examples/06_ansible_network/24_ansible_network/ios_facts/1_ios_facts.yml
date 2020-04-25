@@ -1,10 +1,13 @@
 ---
 
 - name: Collect IOS facts
-  hosts: 192.168.100.1
+  hosts: cisco_routers
 
   tasks:
 
     - name: Facts
       ios_facts:
         gather_subset: all
+
+    - name: debug
+      debug: var=ansible_net_interfaces['Ethernet0/1']

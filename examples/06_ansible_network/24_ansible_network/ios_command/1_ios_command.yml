@@ -12,5 +12,5 @@
       register: sh_ip_int_br_result
 
     - name: Debug registered var
-      debug: var=sh_ip_int_br_result.stdout_lines
+      debug: var=sh_ip_int_br_result
 

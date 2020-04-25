@@ -7,7 +7,7 @@
 
     - name: Facts
       ios_facts:
-        gather_subset: all
+        gather_subset: interfaces
 
     - name: Create all_facts dir
       file:
@@ -17,5 +17,5 @@
 
     - name: Copy facts to files
       copy:
-        content: "{{ ansible_facts | to_nice_json }}"
-        dest: "all_facts/{{inventory_hostname}}_facts.json"
+        content: "{{ ansible_net_interfaces['Ethernet0/0']['ipv4'] | to_nice_yaml }}"
+        dest: "all_facts/{{inventory_hostname}}_facts.yaml"

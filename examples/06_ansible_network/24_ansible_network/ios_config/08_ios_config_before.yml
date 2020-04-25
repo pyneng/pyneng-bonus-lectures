@@ -14,4 +14,6 @@
         lines:
           - permit tcp 10.0.1.0 0.0.0.255 any eq www
           - permit tcp 10.0.1.0 0.0.0.255 any eq 22
-          - permit icmp any any
+        replace: block
+        match: exact
+        save_when: modified

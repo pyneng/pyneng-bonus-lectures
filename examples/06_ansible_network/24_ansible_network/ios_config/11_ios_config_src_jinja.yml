@@ -1,7 +1,7 @@
 ---
 
 - name: Run cfg commands on router
-  hosts: cisco-routers
+  hosts: cisco_routers
 
   tasks:
 

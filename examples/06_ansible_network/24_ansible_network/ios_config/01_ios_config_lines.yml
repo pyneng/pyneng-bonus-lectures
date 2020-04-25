@@ -7,6 +7,6 @@
 
     - name: Config password encryption
       ios_config:
-        lines:
+        commands:
           - service password-encryption
 

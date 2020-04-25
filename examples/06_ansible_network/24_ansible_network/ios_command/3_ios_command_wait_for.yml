@@ -10,5 +10,5 @@
         commands: ping 192.168.100.5 timeout 1
         wait_for:
           - result[0] contains 'Success rate is 100 percent'
-        retries:  2
+        retries: 1
         interval: 12
