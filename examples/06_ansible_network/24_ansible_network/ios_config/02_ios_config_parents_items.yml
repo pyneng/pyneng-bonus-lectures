@@ -5,13 +5,10 @@
 
   tasks:
 
-    - name: Config QoS policy
+    - name: Configure interfaces
       ios_config:
         parents:
           - "interface Ethernet0/{{item}}"
         lines:
-          - ip mtu 1300
-      with_items:
-        - 1
-        - 2
-        - 3
+          - ip mtu 1400
+      with_items: [1, 2, 3]
