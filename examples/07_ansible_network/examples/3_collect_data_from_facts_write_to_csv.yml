@@ -1,0 +1,27 @@
+---
+
+- name: Run show commands on routers
+  hosts: cisco_routers
+
+  tasks:
+    - name: Collect facts
+      ios_facts:
+        gather_subset:
+          - interfaces
+
+    - name: Generate template
+      template:
+        src: templates/hostname_int_ip_to_csv.j2
+        dest: csv_parts/{{ansible_net_hostname}}_result_facts.csv
+
+    - name: Write all files to CSV
+      assemble:
+        src: csv_parts/
+        dest: final_result_from_facts.csv
+      run_once: true
+
+    - name: Remove csv_parts file
+      file:
+        path: csv_parts/{{ansible_net_hostname}}_result_facts.csv
+        state: absent
+
