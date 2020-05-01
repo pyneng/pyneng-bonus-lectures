@@ -1,0 +1,20 @@
+---
+
+- name: Run show commands on routers
+  hosts: r1
+
+
+  tasks:
+
+    - name: Clear interface counters
+      cli_command:
+        command: clear interface e0/0
+        prompt: 'Clear "show interface" counters on this interface'
+        answer: y
+
+    - name: Clear interface counters
+      cli_command:
+        command: clear interface {{ item }}
+        prompt: 'Clear "show interface" counters on this interface'
+        answer: y
+      loop: [e0/0, e0/1, e0/2]

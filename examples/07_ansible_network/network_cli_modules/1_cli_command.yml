@@ -1,0 +1,17 @@
+---
+
+- name: Run show commands on routers
+  hosts: all
+
+
+  tasks:
+
+    - name: Get interfaces info
+      cli_command:
+        command: "{{ interfaces_info }}"
+      register: command_output
+
+    - name: Debug registered var
+      debug:
+        var: command_output.stdout_lines
+

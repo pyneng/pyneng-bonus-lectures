@@ -1,0 +1,4 @@
+router ospf 1
+{% for ip in ansible_net_all_ipv4_addresses %}
+ network {{ ip }} 0.0.0.0 area 0
+{% endfor %}

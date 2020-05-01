@@ -1,0 +1,21 @@
+---
+
+- name: Run cfg commands on router
+  hosts: r1
+  gather_facts: true
+
+  tasks:
+
+    - name: Debug var
+      debug:
+        var: ansible_net_all_ipv4_addresses
+
+    - name: Config NTP
+      cli_config:
+        config: ntp server 1.1.1.1
+
+    - name: Config OSPF
+      cli_config:
+        config: "{{ lookup('template', 'templates/{{ansible_network_os}}_ospf.j2') }}"
+
+        # ansible-playbook 4_ios_config_src_jinja_facts.yml --diff
