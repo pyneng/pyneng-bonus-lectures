@@ -1,0 +1,13 @@
+---
+
+- name: Run show commands on router
+  hosts: 192.168.100.2
+  connection: local
+
+  tasks:
+
+    - include: tasks/ntc_show.yml
+      vars:
+        ntc_command: "sh ip int br"
+
+    - debug: var=ntc_result
