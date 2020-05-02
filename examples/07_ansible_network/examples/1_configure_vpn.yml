@@ -24,7 +24,7 @@
 
     - debug: var=tun_num
 
-    #- debug: var=hostvars[wan_ip_1]["tun_num"]
+      #- debug: var=hostvars
 
     - name: Generate VPN R1
       template:

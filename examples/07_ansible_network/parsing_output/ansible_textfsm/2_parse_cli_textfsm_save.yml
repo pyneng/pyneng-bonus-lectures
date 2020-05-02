@@ -16,4 +16,4 @@
     - name: Save parsed data
       copy:
         content: "{{ result.stdout[0] | parse_cli_textfsm('templates/cisco_ios_show_ip_interface_brief.template') | to_nice_json }}"
-        dest: "parsed_data/{{inventory_hostname}}_{{ command }}.json"
+        dest: "parsed_data/{{inventory_hostname}}_{{ command | replace_spaces }}.json"

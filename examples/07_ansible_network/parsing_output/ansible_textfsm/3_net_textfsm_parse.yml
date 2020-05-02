@@ -4,7 +4,6 @@
   hosts: cisco_routers
 
   vars:
-    platform: cisco_ios
     command: show ip int brief
 
   tasks:
@@ -16,7 +15,7 @@
 
     - name: Debug registered var
       debug:
-        msg: "{{ result.stdout[0] | net_textfsm_parse(platform, command) }}"
+        msg: "{{ result.stdout[0] | parse_textfsm(command) }}"
 
 # export NET_TEXTFSM=/path/to/ntc-templates/templates/
 # ansible-playbook 3_net_textfsm_parse.yml --extra-vars "command=\"sh cdp neigh\" platform=cisco_ios"

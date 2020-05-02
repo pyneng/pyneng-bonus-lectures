@@ -2,13 +2,7 @@
 Filter to convert results from network device show commands obtained from ios_command,
 eos_command, et cetera to structured data using TextFSM templates.
 """
-# from __future__ import unicode_literals
-# from __future__ import print_function
-# from textfsm.clitable import CliTableError
-# import textfsm.clitable as clitable
-
 import os
-#from clitable import CliTableError
 from textfsm import clitable
 
 

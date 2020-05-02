@@ -12,16 +12,16 @@
     - name: run sh ip int br
       ios_command:
         commands: show ip int br
-      register: sh_ip_int_br_result
+      register: sh_result
 
     - name: Set interfaces fact
       set_fact:
-        all_interfaces: "{{ sh_ip_int_br_result.stdout[0] | regex_findall('(\\S+) +([\\d.]+) +') }}"
+        all_interfaces: "{{ sh_result.stdout[0] | regex_findall('(\\S+) +([\\d.]+) +') }}"
 
     - name: Generate template
       template:
         src: templates/sh_ip_int_br_ios_command.j2
-        dest: csv_parts/{{ansible_net_hostname}}_result.csv
+        dest: csv_parts/{{inventory_hostname}}_result.csv
 
     - name: Write all files to CSV
       assemble:
@@ -31,6 +31,6 @@
 
     - name: Remove csv_parts file
       file:
-        path: csv_parts/{{ansible_net_hostname}}_result.csv
+        path: csv_parts/{{inventory_hostname}}_result.csv
         state: absent
 

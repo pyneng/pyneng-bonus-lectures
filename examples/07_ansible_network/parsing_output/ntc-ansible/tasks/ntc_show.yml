@@ -2,7 +2,7 @@
 
 - ntc_show_command:
     connection: ssh
-    platform: "cisco_ios"
+    platform: "{{ntc_platform}}"
     command: "{{ ntc_command }}"
     host: "{{ inventory_hostname }}"
     username: "{{ ansible_user }}"

@@ -6,12 +6,9 @@
 
   tasks:
 
-    - name: Get interfaces info
+    - name: Configure NTP
       cli_config:
-        command: "{{ interfaces_info }}"
+        config: "{{ ntp_config }}"
       register: command_output
 
-    - name: Debug registered var
-      debug:
-        var: command_output.stdout_lines
 

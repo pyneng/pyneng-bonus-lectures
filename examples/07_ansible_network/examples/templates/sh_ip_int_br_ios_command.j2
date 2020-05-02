@@ -1,3 +1,3 @@
 {% for row in all_interfaces %}
-"{{ ansible_net_hostname }}","{{ row[0] }}","{{ row[1] }}"
+"{{ inventory_hostname }}","{{ row[0] }}","{{ row[1] }}"
 {% endfor %}

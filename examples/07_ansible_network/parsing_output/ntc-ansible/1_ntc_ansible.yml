@@ -13,9 +13,9 @@
         platform: "cisco_ios"
         command: "sh ip int br"
         host: "{{ inventory_hostname }}"
-        username: "cisco"
-        password: "cisco"
-        template_dir: "/home/vagrant/repos/ansible_modules/ntc-ansible/ntc-templates/templates"
+        username: "{{ ansible_username }}"
+        password: "{{ ansible_password }}"
+        template_dir: "{{textfsm_templates }}"
       register: result
 
     - debug: var=result

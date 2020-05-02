@@ -1,0 +1,50 @@
+[
+    {
+        "intf": "Ethernet0/0",
+        "ipaddr": "192.168.100.1",
+        "proto": "up",
+        "status": "up"
+    },
+    {
+        "intf": "Ethernet0/1",
+        "ipaddr": "192.168.200.1",
+        "proto": "up",
+        "status": "up"
+    },
+    {
+        "intf": "Ethernet0/2",
+        "ipaddr": "19.1.1.1",
+        "proto": "up",
+        "status": "up"
+    },
+    {
+        "intf": "Ethernet0/3",
+        "ipaddr": "192.168.130.1",
+        "proto": "up",
+        "status": "up"
+    },
+    {
+        "intf": "Loopback0",
+        "ipaddr": "4.4.4.4",
+        "proto": "up",
+        "status": "up"
+    },
+    {
+        "intf": "Loopback35",
+        "ipaddr": "unassigned",
+        "proto": "up",
+        "status": "up"
+    },
+    {
+        "intf": "Loopback55",
+        "ipaddr": "5.5.5.5",
+        "proto": "up",
+        "status": "up"
+    },
+    {
+        "intf": "Loopback90",
+        "ipaddr": "90.1.1.1",
+        "proto": "up",
+        "status": "up"
+    }
+]

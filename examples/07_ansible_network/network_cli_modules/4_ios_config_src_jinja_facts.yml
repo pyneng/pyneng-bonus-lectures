@@ -1,18 +1,18 @@
 ---
 
 - name: Run cfg commands on router
-  hosts: r1
+  hosts: r1,r2,r3
   gather_facts: true
 
   tasks:
 
     - name: Debug var
       debug:
-        var: ansible_net_all_ipv4_addresses
+        var: ansible_network_resources
 
     - name: Config NTP
       cli_config:
-        config: ntp server 1.1.1.1
+        config: "{{ lookup('file', 'templates/ntp.txt') }}"
 
     - name: Config OSPF
       cli_config:

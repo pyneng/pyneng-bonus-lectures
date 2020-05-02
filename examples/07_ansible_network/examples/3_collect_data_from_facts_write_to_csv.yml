@@ -12,7 +12,7 @@
     - name: Generate template
       template:
         src: templates/hostname_int_ip_to_csv.j2
-        dest: csv_parts/{{ansible_net_hostname}}_result_facts.csv
+        dest: csv_parts/{{inventory_hostname}}_result_facts.csv
 
     - name: Write all files to CSV
       assemble:
@@ -22,6 +22,6 @@
 
     - name: Remove csv_parts file
       file:
-        path: csv_parts/{{ansible_net_hostname}}_result_facts.csv
+        path: csv_parts/{{inventory_hostname}}_result_facts.csv
         state: absent
 

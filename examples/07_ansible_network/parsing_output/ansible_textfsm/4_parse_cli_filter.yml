@@ -14,3 +14,7 @@
       debug:
         msg: "{{ sh_ip_int_br_result.stdout[0] | parse_cli('parse_spec/cisco_ios_show_ip_int_br.yml') }}"
 
+    - name: Save parsed data
+      copy:
+        content: "{{ sh_ip_int_br_result.stdout[0] | parse_cli('parse_spec/cisco_ios_show_ip_int_br.yml') | to_nice_yaml }}"
+        dest: "parsed_data/result.yml"

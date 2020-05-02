@@ -8,13 +8,18 @@
 
     - name: Clear interface counters
       cli_command:
-        command: clear interface e0/0
+        command: clear counters e0/0
         prompt: 'Clear "show interface" counters on this interface'
         answer: y
 
     - name: Clear interface counters
       cli_command:
-        command: clear interface {{ item }}
+        command: clear counters {{ item }}
         prompt: 'Clear "show interface" counters on this interface'
         answer: y
-      loop: [e0/0, e0/1, e0/2]
+      loop: [e0/2, e0/1, e0/0]
+
+    - name: Send commands
+      cli_command:
+        command: "{{ item }}"
+      loop: ["sh ip int br", "sh clock"]

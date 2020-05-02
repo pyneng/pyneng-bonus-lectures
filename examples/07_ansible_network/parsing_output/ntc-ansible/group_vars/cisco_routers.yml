@@ -9,3 +9,4 @@ ansible_become_method: enable
 ansible_become_pass: cisco
 
 textfsm_templates: "/home/vagrant/repos/ansible_modules/ntc-ansible/ntc-templates/templates"
+ntc_platform: cisco_ios

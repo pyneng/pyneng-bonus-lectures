@@ -9,3 +9,4 @@ ansible_become_method: enable
 ansible_become_pass: cisco
 
 interfaces_info: sh ip int br
+ntp_config: ntp server 10.1.2.2
