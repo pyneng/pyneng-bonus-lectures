@@ -1,44 +1,44 @@
 # source https://stackoverflow.com/questions/66451253/is-there-a-way-to-specify-a-range-of-valid-values-for-a-function-argument-with-t
 
-In [88]: import inspect
+import inspect
 
-In [89]: @dataclass
-    ...: class ValueRange:
-    ...:     min: float
-    ...:     max: float
-    ...:
-    ...:     def validate_value(self, x):
-    ...:         if not (self.min <= x <= self.max):
-    ...:             raise ValueError(f'{x} must be in range [{self.min}, {self.max}]')
-    ...:
 
-In [90]: def check_annotated(func):
-    ...:     hints = get_type_hints(func, include_extras=True)
-    ...:     spec = inspect.getfullargspec(func)
-    ...:
-    ...:     def wrapper(*args, **kwargs):
-    ...:         for idx, arg_name in enumerate(spec[0]):
-    ...:             hint = hints.get(arg_name)
-    ...:             validators = getattr(hint, '__metadata__', None)
-    ...:             if not validators:
-    ...:                 continue
-    ...:             for validator in validators:
-    ...:                 validator.validate_value(args[idx])
-    ...:
-    ...:         return func(*args, **kwargs)
-    ...:     return wrapper
-    ...:
-    ...:
+@dataclass
+class ValueRange:
+    min: float
+    max: float
 
-In [91]: @check_annotated
-    ...: def function_2(
-    ...:         number: Union[float, int],
-    ...:         fraction: Annotated[float, ValueRange(0.0, 1.0)] = 0.5
-    ...: ):
-    ...:     return fraction * number
-    ...:
-    ...:
+    def validate_value(self, x):
+        if not (self.min <= x <= self.max):
+            raise ValueError(f"{x} must be in range [{self.min}, {self.max}]")
 
+
+def check_annotated(func):
+    hints = get_type_hints(func, include_extras=True)
+    spec = inspect.getfullargspec(func)
+
+    def wrapper(*args, **kwargs):
+        for idx, arg_name in enumerate(spec[0]):
+            hint = hints.get(arg_name)
+            validators = getattr(hint, "__metadata__", None)
+            if not validators:
+                continue
+            for validator in validators:
+                validator.validate_value(args[idx])
+
+        return func(*args, **kwargs)
+
+    return wrapper
+
+
+@check_annotated
+def function_2(
+    number: Union[float, int], fraction: Annotated[float, ValueRange(0.0, 1.0)] = 0.5
+):
+    return fraction * number
+
+
+"""
 In [92]: function_2(1, 2)
 ---------------------------------------------------------------------------
 ValueError                                Traceback (most recent call last)
@@ -62,3 +62,4 @@ ValueError: 2 must be in range [0.0, 1.0]
 
 In [93]: function_2(1, 1)
 Out[93]: 1
+"""
