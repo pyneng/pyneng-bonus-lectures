@@ -1,3 +1,4 @@
+
 class Topology:
     def __init__(self, topology_dict):
         self.topology = self._normalize(topology_dict)
