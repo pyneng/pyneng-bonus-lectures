@@ -9,3 +9,14 @@
 New topics:
 
 * [Enum docs](https://docs.python.org/3/library/enum.html), [enum stackoverflow](https://stackoverflow.com/questions/37601644/python-whats-the-enum-type-good-for)
+
+
+## notes
+
+Argument
+
+```python
+def main(ip_address: str, count: int = typer.Argument(...)):
+def main(ip_address: str, count: Optional[int] = typer.Argument(3)):
+def main(ip_address: str, count: Optional[int] = typer.Argument(None)):
+```
