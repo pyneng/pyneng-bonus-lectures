@@ -21,15 +21,12 @@ def ping_ip(ip_address, count):
         return False
 
 
-#def main(ip_address: str, count: int):
-def main(ip_address: str, count: int = typer.Argument(...)):
-def main(ip_address: str, count: Optional[int] = typer.Argument(3)):
-def main(ip_address: str, count: Optional[int] = typer.Argument(None)):
+def main(ip_address: str, count: int):
     """
     Ping IP_ADDRESS
     """
-    pprint(ip_address)
-    pprint(count)
+    # pprint(ip_address)
+    # pprint(count)
     status = ping_ip(ip_address, count)
     if status:
         print(f"IP-адрес {ip_address:15} пингуется")

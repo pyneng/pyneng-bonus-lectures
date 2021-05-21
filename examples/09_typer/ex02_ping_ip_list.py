@@ -1,5 +1,6 @@
 import subprocess
-from typing import List
+from pprint import pprint
+from typing import List, Tuple
 import typer
 
 
@@ -20,13 +21,13 @@ def ping_ip(ip_address, count):
         return False
 
 
-def main(ip_addresses: List[str]):
+def main(ip_addresses: List[str], count: int = 3):
     """
     Ping IP_ADDRESS
     """
-    print(ip_addresses)
+    # pprint(ip_addresses)
     for ip in ip_addresses:
-        status = ping_ip(ip, count=3)
+        status = ping_ip(ip, count)
         if status:
             print(f"IP-адрес {ip:15} пингуется")
         else:
