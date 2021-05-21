@@ -32,7 +32,7 @@ def ping_ip_addresses(ip_addresses, count):
     return reachable, unreachable
 
 
-def main(ip_addresses: List[str], count: int):
+def main(ip_addresses: List[str], count: int = 3):
     """
     Ping IP_ADDRESS
     """
@@ -46,12 +46,3 @@ def main(ip_addresses: List[str], count: int):
 if __name__ == "__main__":
     typer.run(main)
 
-"""
-$ python example_03_ping_ip_list_progress_bar.py 8.8.8.8 8.8.4.4 10.1.1.1 192.168.100.1
-Пингую адреса  [####################################]  100%
-IP-адрес 8.8.8.8         пингуется
-IP-адрес 8.8.4.4         пингуется
-IP-адрес 192.168.100.1   пингуется
-IP-адрес 10.1.1.1        не пингуется
-
-"""
