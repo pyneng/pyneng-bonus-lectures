@@ -32,7 +32,7 @@ def ping_ip_addresses(ip_addresses, count):
     return reachable, unreachable
 
 
-def main(ip_addresses: List[str], count: int):
+def main(ip_addresses: List[str], count: int = 3):
     """
     Ping IP_ADDRESS
     """
