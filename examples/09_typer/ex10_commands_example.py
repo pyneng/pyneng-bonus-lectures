@@ -3,7 +3,7 @@ import click
 import typer
 from typing import List
 
-app = typer.Typer()
+
 # Default values:
 DFLT_DB_NAME = "dhcp_snooping.db"
 DFLT_DB_SCHEMA = "dhcp_snooping_schema.sql"
@@ -13,9 +13,10 @@ class DatabaseKeys(str, Enum):
     mac = "mac"
     ip = "ip"
     vlan = "vlan"
-    interface = "interface"
+    intf = "interface"
     switch = "switch"
 
+app = typer.Typer()
 
 @app.command()
 def create(
@@ -47,8 +48,7 @@ def add(
 
 @app.command()
 def get(
-    db_filename: str = typer.Option(DFLT_DB_NAME, "--db", help="DB filename"),
-    key: DatabaseKeys = typer.Option(DatabaseKeys.switch),
+    key: DatabaseKeys = typer.Option(DatabaseKeys.intf),
     value: str = "",
     show_all: bool = True,
 ):
