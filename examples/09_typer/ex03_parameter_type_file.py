@@ -34,7 +34,7 @@ def main(
             output.write(out + "\n")
         else:
             print(ip.center(30, "="))
-            print(output)
+            print(out)
 
 
 if __name__ == "__main__":
