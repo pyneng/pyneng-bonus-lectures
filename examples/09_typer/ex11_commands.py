@@ -49,3 +49,45 @@ def options(
 
 if __name__ == "__main__":
     app()
+
+
+"""
+$ python ex11_commands.py --help
+Usage: ex11_commands.py [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  --help                Show this message and exit.
+
+Commands:
+  file     Read params from file
+  options  Enter params as options/input
+
+$ python ex11_commands.py file --help
+Usage: ex11_commands.py file [OPTIONS] COMMAND SSH_PARAMS
+
+  Read params from file
+
+Arguments:
+  COMMAND     [required]
+  SSH_PARAMS  [required]
+
+Options:
+  --max-threads INTEGER RANGE  [default: 10]
+  --help                       Show this message and exit.
+
+$ python ex11_commands.py options --help
+Usage: ex11_commands.py options [OPTIONS] COMMAND IP_LIST...
+
+  Enter params as options/input
+
+Arguments:
+  COMMAND     [required]
+  IP_LIST...  [required]
+
+Options:
+  -u, --username TEXT          [required]
+  -p, --password TEXT          [required]
+  -e, --enable TEXT            [required]
+  --max-threads INTEGER RANGE  [default: 10]
+  --help                       Show this message and exit.
+"""
