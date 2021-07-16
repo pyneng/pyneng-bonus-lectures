@@ -7,7 +7,7 @@ install()
 def send_show(device, command):
     with netmiko.Netmiko(**device) as ssh:
         ssh.enable()
-        output = ssh.send_command(cmd)
+        output = ssh.send_command(command)
         return output
 
 
