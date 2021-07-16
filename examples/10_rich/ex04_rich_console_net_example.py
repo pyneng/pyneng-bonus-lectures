@@ -10,6 +10,7 @@ custom_theme = Theme({
     "success" : "bold blue",
     "fail" : "bold red",
     "error": "bold yellow",
+    "repr.str": "bold white",
     #"repr.number": "bold green", # defaults: python -m rich.theme
 })
 console = Console(theme=custom_theme)
