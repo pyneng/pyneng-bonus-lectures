@@ -40,4 +40,4 @@ class IPHighlighter(RegexHighlighter):
 theme = Theme({"example.ip": "bold blue"})
 console = Console(highlighter=IPHighlighter(), theme=theme)
 console.print(ip_list)
-console.log("Connect to 10.1.1.1")
+console.log("[red]Connect to [/red]10.1.1.1")
