@@ -12,6 +12,7 @@ custom_theme = Theme({
     "error": "bold yellow",
     #"repr.number": "bold green", # defaults: python -m rich.theme
 })
+console = Console(theme=custom_theme)
 
 
 def send_show(device, show_commands):
@@ -31,11 +32,21 @@ def send_show(device, show_commands):
         console.log(error, ip, style="fail")
 
 
+def send_show_to_devices(devices, commands):
+    results = {}
+    with console.status("Working..."):
+        for dev in devices:
+            output = send_show(dev, commands)
+            console.log(output)
+            results[dev["host"]] = output
+            console.rule(f"Device {dev['host']} DONE")
+    return results
+
+
 if __name__ == "__main__":
     with open("devices_scrapli.yaml") as f:
         devices = yaml.safe_load(f)
-    for dev in devices:
-        output = send_show(dev, ["sh clock", "sh int desc"])
-        console.log(output)
+    output = send_show_to_devices(devices, ["sh clock", "sh int desc"])
+    console.log(output)
 
 
