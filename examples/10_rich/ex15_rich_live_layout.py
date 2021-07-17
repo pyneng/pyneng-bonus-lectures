@@ -12,7 +12,7 @@ from rich.table import Table
 from rich.console import Console
 from rich.layout import Layout
 from rich.panel import Panel
-from rich.pretty import pretty_repr
+from rich.pretty import pretty_repr, Pretty
 from rich import box
 
 from topology_explorer import parse_cdp, connect_ssh
@@ -55,8 +55,8 @@ def make_layout():
 
 def explore_topology(start_device_ip, params, layout=None):
     log_table = []  # Rich
-    if layout:
-        print = log_table.append
+    if layout:  # Rich
+        print = log_table.append  # Rich
 
     visited_hostnames = set()
     visited_ipadresses = set()
@@ -65,9 +65,8 @@ def explore_topology(start_device_ip, params, layout=None):
     todo.append(start_device_ip)
 
     while len(todo) > 0:
-        # live.update(generate_tree_from_schema(topology)) # Rich
-        layout["tree"].update(generate_tree_from_schema(topology))
-        layout["log"].update(generate_log_table(log_table))
+        layout["tree"].update(generate_tree_from_schema(topology))  # Rich
+        layout["log"].update(generate_log_table(log_table))  # Rich
         current_ip = todo.pop(0)
         params["host"] = current_ip
 
@@ -76,8 +75,7 @@ def explore_topology(start_device_ip, params, layout=None):
             continue
         current_host, sh_cdp_neighbors_output = result
         neighbors = parse_cdp(sh_cdp_neighbors_output)
-        print("\nFound neighbors")
-        print(pretty_repr(neighbors))
+        print(f"\nFound neighbors {neighbors}")
 
         topology[current_host] = neighbors
         visited_ipadresses.add(current_ip)
