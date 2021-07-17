@@ -12,8 +12,9 @@ from rich.logging import RichHandler
 logging.getLogger("scrapli").setLevel(logging.WARNING)
 
 logging.basicConfig(
-    format="%(threadName)s %(name)s %(levelname)s: %(message)s",
+    format="%(name)s: %(message)s",
     level=logging.INFO,
+    datefmt="[%X]",
     handlers=[RichHandler()],
 )
 
@@ -32,7 +33,8 @@ def send_show(device, show_commands):
         logging.info(f"<<< Received output from {host}")
         return cmd_dict
     except ScrapliException as error:
-        logging.exception(str(error) + host)
+        #logging.exception(error)
+        logging.critical(f"Error connecting to {host}")
 
 
 def send_show_to_devices(devices, show, max_threads=10):
@@ -47,5 +49,5 @@ def send_show_to_devices(devices, show, max_threads=10):
 if __name__ == "__main__":
     with open("devices_scrapli.yaml") as f:
         devices = yaml.safe_load(f)
-    output = send_show_to_devices(devices, "sh int desc")
-    pprint(output)
+    output = send_show_to_devices(devices, "sh clock")
+    pprint(output, width=120)
