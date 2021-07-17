@@ -1,0 +1,22 @@
+2021-07-17 11:47:19,437 - __main__ - INFO - >>> Connecting to 192.168.100.1
+2021-07-17 11:47:19,446 - __main__ - INFO - >>> Connecting to 192.168.100.2
+2021-07-17 11:47:19,455 - __main__ - INFO - >>> Connecting to 192.168.100.22
+2021-07-17 11:47:19,465 - __main__ - INFO - >>> Connecting to 192.168.100.3
+2021-07-17 11:47:22,249 - __main__ - INFO - <<< Received output from 192.168.100.1
+2021-07-17 11:47:22,268 - __main__ - INFO - <<< Received output from 192.168.100.2
+2021-07-17 11:47:22,573 - __main__ - INFO - <<< Received output from 192.168.100.3
+2021-07-17 11:47:24,696 - __main__ - CRITICAL - Error connecting to 192.168.100.22
+2021-07-17 11:47:35,494 - __main__ - INFO - >>> Connecting to 192.168.100.1
+2021-07-17 11:47:35,504 - __main__ - INFO - >>> Connecting to 192.168.100.2
+2021-07-17 11:47:35,511 - __main__ - INFO - >>> Connecting to 192.168.100.22
+2021-07-17 11:47:35,518 - __main__ - INFO - >>> Connecting to 192.168.100.3
+2021-07-17 11:47:40,758 - __main__ - CRITICAL - Error connecting to 192.168.100.22
+2021-07-17 11:47:47,654 - __main__ - INFO - >>> Connecting to 192.168.100.1
+2021-07-17 11:47:47,667 - __main__ - INFO - >>> Connecting to 192.168.100.2
+2021-07-17 11:47:47,675 - __main__ - INFO - >>> Connecting to 192.168.100.22
+2021-07-17 11:47:47,683 - __main__ - INFO - >>> Connecting to 192.168.100.3
+2021-07-17 11:47:50,477 - __main__ - INFO - <<< Received output from 192.168.100.2
+2021-07-17 11:47:50,537 - __main__ - INFO - <<< Received output from 192.168.100.1
+2021-07-17 11:47:50,783 - __main__ - INFO - <<< Received output from 192.168.100.3
+2021-07-17 11:47:52,918 - __main__ - CRITICAL - Error connecting to 192.168.100.22
+2021-07-17 11:49:16,910 - __main__ - CRITICAL - Error connecting to 192.168.100.22
