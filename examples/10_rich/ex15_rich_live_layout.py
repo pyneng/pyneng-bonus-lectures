@@ -12,7 +12,7 @@ from rich.table import Table
 from rich.console import Console
 from rich.layout import Layout
 from rich.panel import Panel
-from rich.pretty import Pretty
+from rich.pretty import pretty_repr
 from rich import box
 
 from topology_explorer import parse_cdp, connect_ssh
@@ -28,17 +28,13 @@ def generate_tree_from_schema(schema):
 
 
 def generate_log_table(data):
-    new_data = []
-    for s in data:
-        if type(s) == str:
-            new_data.extend(s.split("\n"))
-        else:
-            new_data.append(s)
+    new_data = "\n".join(data)
+    data = new_data.split("\n")
     c = Console()
     last_n = c.size.height - 10
     log_table = Table(expand=True, show_header=False, show_footer=False, box=box.SIMPLE)
     log_table.add_column("Script execution log")
-    for row in new_data[-last_n:]:
+    for row in data[-last_n:]:
         log_table.add_row(row)
     return Panel(log_table, title="Execution log")
 
@@ -58,7 +54,7 @@ def make_layout():
 
 
 def explore_topology(start_device_ip, params, layout=None):
-    log_table = [] # Rich
+    log_table = []  # Rich
     if layout:
         print = log_table.append
 
@@ -80,8 +76,8 @@ def explore_topology(start_device_ip, params, layout=None):
             continue
         current_host, sh_cdp_neighbors_output = result
         neighbors = parse_cdp(sh_cdp_neighbors_output)
-        print("\n\n\n\n\n\nFound neighbors")
-        print(Pretty(neighbors))
+        print("\nFound neighbors")
+        print(pretty_repr(neighbors))
 
         topology[current_host] = neighbors
         visited_ipadresses.add(current_ip)
@@ -99,12 +95,10 @@ def explore_topology(start_device_ip, params, layout=None):
     return topology
 
 
-
 def make_pretty(start, common_params):
     layout = make_layout()
-    with Live(layout, refresh_per_second=10) as live: # Rich
+    with Live(layout, refresh_per_second=10) as live:  # Rich
         topology = explore_topology(start, common_params, layout)
-
 
 
 if __name__ == "__main__":
@@ -119,4 +113,3 @@ if __name__ == "__main__":
     }
     start = "192.168.100.1"
     make_pretty(start, common_params)
-
