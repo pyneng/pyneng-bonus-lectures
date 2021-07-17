@@ -42,7 +42,7 @@ def send_show_to_devices(devices, show, max_threads=10):
 
 
 if __name__ == "__main__":
-    with open("devices.yaml") as f:
+    with open("devices_scrapli.yaml") as f:
         devices = yaml.safe_load(f)
     output = send_show_to_devices(devices, "sh int desc")
     pprint(output, width=120)

@@ -12,8 +12,9 @@ from rich.logging import RichHandler
 logging.getLogger("scrapli").setLevel(logging.WARNING)
 
 logging.basicConfig(
-    format="%(threadName)s %(name)s %(levelname)s: %(message)s", level=logging.INFO,
-    handlers=[RichHandler()]
+    format="%(threadName)s %(name)s %(levelname)s: %(message)s",
+    level=logging.INFO,
+    handlers=[RichHandler()],
 )
 
 
@@ -47,5 +48,4 @@ if __name__ == "__main__":
     with open("devices_scrapli.yaml") as f:
         devices = yaml.safe_load(f)
     output = send_show_to_devices(devices, "sh int desc")
-    pprint(output, width=120)
-
+    pprint(output)
