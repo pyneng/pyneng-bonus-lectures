@@ -15,7 +15,7 @@ from rich.panel import Panel
 from rich.pretty import pretty_repr, Pretty
 from rich import box
 
-from topology_explorer import parse_cdp, connect_ssh
+from topology_explorer2 import parse_cdp, connect_ssh
 
 
 def generate_tree_from_schema(schema):

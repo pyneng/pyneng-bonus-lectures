@@ -28,7 +28,9 @@ def parse_cdp(output):
     return neighbors
 
 
-def connect_ssh(device, command):
+def connect_ssh(device, command, log=None):
+    if log is not None:
+        print = log.append
     host = device["host"]
     print(f">>> Connecting to {host}")
     try:
